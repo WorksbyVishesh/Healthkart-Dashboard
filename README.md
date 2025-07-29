@@ -148,15 +148,14 @@ This chart shows the gender distribution of influencers. The analysis can help e
 
 ## **Links to Project Resources**
 
-* **Power BI Dashboard**: Healthkart-_Dashboard-_Assignment
-/Healthkart Dashboard .pbix
+* **Power BI Dashboard**: https://github.com/WorksbyVishesh/Healthkart-_Dashboard-_Assignment/edit/main/README.md
 * **CSV Files**:
 
   * [Influencers Data](https://github.com/Jaideepgupta/Healthkart-Dashboard/blob/main/influencers.csv)
   * [Posts Data](https://github.com/Jaideepgupta/Healthkart-Dashboard/blob/main/posts.csv)
   * [Tracking Data](https://github.com/Jaideepgupta/Healthkart-Dashboard/blob/main/tracking_data.csv)
   * [Payouts Data](https://github.com/Jaideepgupta/Healthkart-Dashboard/blob/main/payouts.csv)
-* **Data Model**: [Data Model Explanation](https://github.com/Jaideepgupta/Healthkart-Dashboard/blob/main/Data%20Model.png)
+* **Data Model**: [Data Model Explanation]https://github.com/WorksbyVishesh/Healthkart-_Dashboard-_Assignment/edit/main/README.md
 
 ---
 
