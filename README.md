@@ -79,8 +79,7 @@ Total Spend = SUMX(Payout, Payout[rate] * Payout[orders])
 
 ROAS = DIVIDE([Total Revenue], [Total Spend])
 
-
-📊 Visualizations
+#📊 Visualizations
 - Bar Charts: Top Influencers by Revenue, Most Purchased Products
 - Line Chart: ROAS over Time
 - Pie Charts: Platform Performance, Gender Distribution
