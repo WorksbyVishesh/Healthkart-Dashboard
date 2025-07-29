@@ -43,9 +43,6 @@ The dataset is generated using Python and sqlite3, with the following key attrib
 
 To run the Python data generation script, install the required dependencies:
 
-import pandas as pd
-import sqlite3
-
 # Load Excel file
 xls = pd.ExcelFile('hk_assnmt.xlsx')
 df_payout = pd.read_excel(xls, sheet_name='payout')
@@ -69,6 +66,7 @@ df_posts.to_sql('posts', conn, index=False)
 
 conn.close()
 print("✅ SQLite database 'hk_assignment.db' created successfully.")
+
 ## **Power BI Dashboard**
 
 ### **1. Import Data into Power BI**
@@ -149,12 +147,8 @@ This chart shows the gender distribution of influencers. The analysis can help e
 ## **Links to Project Resources**
 
 * **Power BI Dashboard**: https://github.com/WorksbyVishesh/Healthkart-_Dashboard-_Assignment/edit/main/README.md
-* **CSV Files**:
+* **Excel Workbook**:
 
-  * [Influencers Data](https://github.com/Jaideepgupta/Healthkart-Dashboard/blob/main/influencers.csv)
-  * [Posts Data](https://github.com/Jaideepgupta/Healthkart-Dashboard/blob/main/posts.csv)
-  * [Tracking Data](https://github.com/Jaideepgupta/Healthkart-Dashboard/blob/main/tracking_data.csv)
-  * [Payouts Data](https://github.com/Jaideepgupta/Healthkart-Dashboard/blob/main/payouts.csv)
 * **Data Model**: [Data Model Explanation]https://github.com/WorksbyVishesh/Healthkart-_Dashboard-_Assignment/edit/main/README.md
 
 ---
