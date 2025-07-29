@@ -1,41 +1,48 @@
-# 💡 Healthkart-Dashboard
+# **Healthkart-Dashboard**
 
-## 📝 Overview
+## **Overview**
 
-This project demonstrates how to build a relational SQLite database from influencer campaign data stored in an Excel file, and how to develop an interactive **Power BI Dashboard** to track key performance metrics such as **Total Revenue**, **Total Spend**, and **ROAS (Return on Ad Spend)**. The dashboard helps analyze campaign effectiveness across platforms and products.
+This project demonstrates how to simulate data for influencer marketing campaigns and build an interactive **Power BI Dashboard** to track key performance metrics such as **Total Revenue**, **Total Spend**, **Return on Ad Spend (ROAS)**, and more. The dashboard provides insights into the effectiveness of influencer campaigns across various platforms and products.
+
+## **Objective**
+
+The goal of this project is to:
+
+* **Generate synthetic data** for influencer campaigns, posts, tracking data, and payouts.
+* **Analyze the data** using Power BI to track **ROI (ROAS)**, **performance over time**, and **influencer effectiveness**.
+* **Generate insights** such as top influencers, most purchased products, and influencer payouts.
 
 ---
 
-## 🎯 Objective
+## **Project Structure**
 
-* Convert structured Excel sheets into a relational database
-* Import data into **Power BI** and define DAX measures
-* Generate insights on campaign ROI, top influencers, and payouts
-
----
-
-## 🏗️ Project Structure
-
-1. **Database Generation**: Uses Python and `pandas` to read Excel sheets and construct an SQLite database.
-2. **Power BI Dashboard**: Connects to the database for modeling, DAX calculations, and insights visualization.
-3. **Dashboard Insights**: Showcases KPIs and charts like:
+1. **Data Generation**: The data is simulated using **Python**. Synthetic data includes influencers, their posts, campaign performance data, and payout details.
+2. **Power BI Dashboard**: The data is then imported into **Power BI**, where relationships are set up, and key performance metrics are calculated using DAX. Interactive visualizations show trends, insights, and comparisons.
+3. **Dashboard Insights**: The final dashboard presents metrics such as:
 
    * Total Revenue
    * Total Spend
-   * ROAS & Incremental ROAS
+   * Incremental ROAS
    * Top Influencers by Revenue
-   * Product Purchase Trends
+   * Most Purchased Products
 
 ---
 
-## 🛠️ Database Generation
+## **Data Generation**
 
-### 📂 Requirements
+### **Data Generation with Python**
 
-To run the Python script, install the following:
+The dataset is generated using Python and sqlite3, with the following key attributes:
 
-```bash
-pip install pandas openpyxl
+* **Influencers**: Simulated with attributes like ID, name, category, gender, follower count, and platform.
+* **Posts**: Each influencer has posts with details like platform, date, URL, reach, likes, and comments.
+* **Tracking Data**: Contains data such as source, campaign, product, orders, and revenue for each influencer's post.
+* **Payouts**: Simulated payouts based on posts or orders, showing the total payout per influencer.
+
+### **Dependencies**
+
+To run the Python data generation script, install the required dependencies:
+
 import pandas as pd
 import sqlite3
 
@@ -62,52 +69,98 @@ df_posts.to_sql('posts', conn, index=False)
 
 conn.close()
 print("✅ SQLite database 'hk_assignment.db' created successfully.")
-📈 Power BI Dashboard Steps
-1. Import Data
-- Open Power BI Desktop
-- Go to Home > Get Data > SQLite
-- Select hk_assignment.db and import the four tables
-2. Create Relationships
-- In Model View, link tables by influencer_id:
-- Influencer ↔ Posts
-- Influencer ↔ Tracking
-- Influencer ↔ Payouts
-3. Add Measures
-Total Revenue = SUM(Tracking[revenue])
+## **Power BI Dashboard**
 
-Total Spend = SUMX(Payout, Payout[rate] * Payout[orders])
+### **1. Import Data into Power BI**
 
-ROAS = DIVIDE([Total Revenue], [Total Spend])
+* Open **Power BI Desktop**.
+* Go to **Home** > **Get Data** > **Text/CSV**.
+* Import the following CSV files:
 
-#📊 Visualizations
-- Bar Charts: Top Influencers by Revenue, Most Purchased Products
-- Line Chart: ROAS over Time
-- Pie Charts: Platform Performance, Gender Distribution
-- KPIs: Total Revenue, Total Spend, ROAS
+  * `influencers.csv`
+  * `posts.csv`
+  * `tracking_data.csv`
+  * `payouts.csv`
+* Click **Load** to load the data into Power BI.
 
-💡 Insights
-- Top Influencers: Revenue comparison (e.g. Julia Bennett, Christina Camacho)
-- ROAS Trends: Track ROI efficiency month-by-month
-- Brand Performance: Gritzo emerges as top-selling product
-- Platform ROI: Breakdown of engagement across Instagram, YouTube, Twitter
-- Diversity Check: Gender and category distribution of influencers
+### **2. Create Relationships**
 
-🔗 Resources
-- Dashboard PDF: 
-- Database Script: Included above
-- Excel Source File: hk_assnmt.xlsx — manually added to the repository
-- Power BI File: campaign_dashboard.pbix
+* Go to the **Model** view and create relationships between the tables based on `influencer_id`:
 
-👨‍💻 Created by Vishesh
-This project applies structured guidance and iterative refinement across data modeling, visual storytelling, and campaign analytics.
+  * **Influencers** <-> **Posts**
+  * **Influencers** <-> **Tracking Data**
+  * **Influencers** <-> **Payouts**
 
-⚙️ Tools & Technologies
-- Python (pandas, openpyxl, sqlite3)
-- Power BI Desktop
-- Excel
+### **3. Create Calculated Measures**
 
-🙌 Contributions Welcome
-Feedback, ideas, and enhancements are always appreciated. Let’s decode influencer performance and build smarter dashboards together 🔍📈
+* **Total Revenue**:
+
+  ```DAX
+  Total Revenue = SUM(TrackingData[revenue])
+  ```
+* **Total Spend**:
+
+  ```DAX
+  Total Spend = SUMX(Payouts, Payouts[rate] * Payouts[orders])
+  ```
+* **ROAS**:
+
+  ```DAX
+  ROAS = DIVIDE([Total Revenue], [Total Spend])
+  ```
+
+### **4. Create Visualizations**
+
+* **Bar Charts** for **Top Influencers by Revenue** and **Most Purchased Products by Users**.
+* **Line Chart** for **ROAS over Time**.
+* **Pie Charts** for **Performance by Platform** and **Influencers by Gender**.
+* **KPIs** to display **Total Revenue**, **Total Spend**, and **Incremental ROAS**.
 
 ---
 
+## **Insights from the Dashboard**
+
+### **Top Influencers by Revenue**
+
+This visualization ranks influencers based on the total revenue they generated. Key insights include identifying the top-performing influencers, like **LIFTBOSS** and **FITGURU**, who drive the most revenue.
+
+### **ROAS Over Time**
+
+This line chart helps track the efficiency of campaigns by comparing **ROAS** over several months. It shows trends in campaign effectiveness, helping identify opportunities to improve return on ad spend.
+
+### **Most Purchased Products by Users**
+
+By analyzing the number of orders for each product, this chart reveals which products are driving the most sales. **Gritzo** emerged as the top-performing product.
+
+### **Influencer Payout Analysis**
+
+This table provides a detailed analysis of payouts per influencer based on posts or orders. **Fitguru** and **Nutrinova** stand out in terms of payout, with a higher number of orders or posts.
+
+### **Platform Performance**
+
+This pie chart breaks down campaign performance across platforms (e.g., **YouTube** vs **Twitter**), helping marketers decide where to allocate future resources.
+
+### **Gender Distribution of Influencers**
+
+This chart shows the gender distribution of influencers. The analysis can help ensure diversity in future campaigns and reveal any skewed trends toward male or female influencers.
+
+---
+
+## **Links to Project Resources**
+
+* **Power BI Dashboard**: 
+* **CSV Files**:
+
+  * [Influencers Data](https://github.com/Jaideepgupta/Healthkart-Dashboard/blob/main/influencers.csv)
+  * [Posts Data](https://github.com/Jaideepgupta/Healthkart-Dashboard/blob/main/posts.csv)
+  * [Tracking Data](https://github.com/Jaideepgupta/Healthkart-Dashboard/blob/main/tracking_data.csv)
+  * [Payouts Data](https://github.com/Jaideepgupta/Healthkart-Dashboard/blob/main/payouts.csv)
+* **Data Model**: [Data Model Explanation](https://github.com/Jaideepgupta/Healthkart-Dashboard/blob/main/Data%20Model.png)
+
+---
+
+### **Conclusion**
+
+This project showcases how to simulate influencer campaign data and build a Power BI dashboard for actionable insights on campaign performance, influencer effectiveness, and product sales. The dashboard provides valuable tools to optimize future influencer marketing strategies.
+
+---
